@@ -10,7 +10,7 @@ class Solution:
         else:
             self.time = f"{elapse*1000:.1f}ms"
 
-    def solve(self, N=20):
+    def solve(self, N=20, M=20):
         """
         Think about the 2*2 grid. We need to go 2+2 steps, of which there are 2 steps we need
         to choose to go down (or right). In the example, the first route can be expressed as
@@ -21,7 +21,7 @@ class Solution:
 
         from math import comb
 
-        return comb(N + N, N)
+        return comb(N + M, N)
 
 
 if __name__ == "__main__":

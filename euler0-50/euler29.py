@@ -10,13 +10,12 @@ class Solution:
         else:
             self.time = f"{elapse*1000:.1f}ms"
 
-    def solve(self):
-        def isPal(n):
-            return str(n) == str(n)[::-1]
-
-        return max(
-            i * j for i in range(100, 1000) for j in range(100, 1000) if isPal(i * j)
-        )
+    def solve(self, N=100):
+        """
+        For n=100, number larger than sqrt(n)=10 can not be 
+        """
+        
+        return len({a**b for a in range(2,N+1) for b in range(2,N+1)})
 
 
 if __name__ == "__main__":

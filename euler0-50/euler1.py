@@ -14,7 +14,7 @@ class Solution:
         return sum([i for i in range(0, N) if i % 3 == 0 or i % 5 == 0])
 
     def solve2(self, N=1000):
-        arithmetic_sum = lambda x, p: p / 2 * (x // p) * (x // p + 1)
+        arithmetic_sum = lambda x, p: p * (x // p) * (x // p + 1) // 2
         return (
             arithmetic_sum(N - 1, 3)
             + arithmetic_sum(N - 1, 5)
