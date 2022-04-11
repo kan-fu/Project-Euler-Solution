@@ -10,7 +10,7 @@ class Solution:
         else:
             self.time = f"{elapse*1000:.1f}ms"
 
-    def solve(self, N=9, seq=1000000):
+    def solve(self, seq=1000000, digits="0123456789"):
         """
         | seq | perm  | seq // 2! | seq % 2! |
         |-----|-------|-----------|----------|
@@ -32,7 +32,7 @@ class Solution:
         """
         import math
 
-        digits = "0123456789"
+        N = len(digits) - 1
         ans = []
         seq -= 1  # modify to 0-indexed sequence
         for n in reversed(range(N + 1)):

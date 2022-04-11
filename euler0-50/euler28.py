@@ -24,8 +24,8 @@ class Solution:
         16*n*(n+1)*(2n+1)/6 + 4*n*(n+1)/2 + 4n, and the answer is this sum plus
         the 0th ring, which is 1.
         """
-        n = (N - 1) / 2
-        return 16 * n * (n + 1) * (2 * n + 1) / 6 + 4 * n * (n + 1) / 2 + 4 * n + 1
+        n = (N - 1) // 2
+        return 16 * n * (n + 1) * (2 * n + 1) // 6 + 4 * n * (n + 1) // 2 + 4 * n + 1
 
 
 if __name__ == "__main__":
