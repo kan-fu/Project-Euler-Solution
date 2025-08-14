@@ -10,7 +10,7 @@ class Solution:
         else:
             self.time = f"{elapse*1000:.1f}ms"
 
-    def solve(self, N=1000):  
+    def solve(self, N=1000):
         return sum(map(int, str(2**N)))
 
     def solve2(self, N=1000):

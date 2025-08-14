@@ -1,4 +1,3 @@
-from numpy import sign
 
 
 class Solution:

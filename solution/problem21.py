@@ -19,8 +19,9 @@ class Solution:
         For p^q, the divisors are 1, p, p^2, ... , p^q, so the sum is (1-p^(q+1))/(1-p).
         The result minus the number itself is the sum of the proper divisors.
         """
-        from sympy.ntheory import factorint
         import math
+
+        from sympy.ntheory import factorint
 
         d = {}
         for n in range(1, N):

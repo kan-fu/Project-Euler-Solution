@@ -14,8 +14,9 @@ class Solution:
         """
         Use the same method in euler 21 to calculate sum of proper divisors.
         """
-        from sympy.ntheory import factorint
         import math
+
+        from sympy.ntheory import factorint
 
         abundant = []
         for n in range(1, N):

@@ -22,10 +22,11 @@ class Solution:
         Triangle number has the form n*(n+1)/2, so we can factor n/2 and n+1 when n is even
         or (n+1)/2 and n when n is odd.
         """
-        from sympy.ntheory import factorint
-        from itertools import count
         from collections import Counter
+        from itertools import count
+
         import numpy as np
+        from sympy.ntheory import factorint
 
         for n in count(1):
             if n % 2 == 0:
@@ -46,10 +47,10 @@ class Solution:
         sort it back to the original order.
 
         """
-        from collections.abc import Iterator
-        from collections import Counter
-        from itertools import count
         import math
+        from collections import Counter
+        from collections.abc import Iterator
+        from itertools import count
 
         def sieve(upTo: int) -> Iterator[int]:
             """
