@@ -1,58 +1,47 @@
-class Solution:
-    def __init__(self):
-        import time
+def solve(n=10001):
+    """
+    According to https://en.wikipedia.org/wiki/Prime_number_theorem#Approximations_for_the_nth_prime_number,
+    pn / n < log n + log log n for n >= 6, where pn is the nth prime number
+    """
+    import math
+    from typing import Generator
 
-        start = time.time()
-        self.answer = self.solve()
-        elapse = time.time() - start
-        if elapse > 1:
-            self.time = f"{elapse:.1f}s"
-        else:
-            self.time = f"{elapse*1000:.1f}ms"
+    upper_bound = max(6, int(n * (math.log(n) + math.log(math.log(n)))))
 
-    def solve(self, N=10001):
+    def sieve(up_to: int) -> Generator[int]:
         """
-        According to https://en.wikipedia.org/wiki/Prime_number_theorem#Approximations_for_the_nth_prime_number,
-        pn / n < log n + log log n for n >= 6, where pn is the nth prime number
+        Generate primes upto (including) given number
+
+        >>> list(sieve(10))
+        [2, 3, 5, 7]
+        >>> list(sieve(11))
+        [2, 3, 5, 7, 11]
         """
-        import math
-        from collections.abc import Iterator
+        primes = [True for _ in range(up_to + 1)]
+        primes[0] = False
+        primes[1] = False
+        p = 2
+        while p * p <= up_to:
+            if primes[p]:
+                for i in range(p * 2, up_to + 1, p):
+                    primes[i] = False
+            p += 1
+        for p in range(2, up_to + 1):
+            if primes[p]:
+                yield p
 
-        upper_bound = max(6, int(N * (math.log(N) + math.log(math.log(N)))))
+    gen_sieve = sieve(upper_bound)
+    for _ in range(n - 1):
+        next(gen_sieve)
+    return next(gen_sieve)
 
-        def sieve(upTo: int) -> Iterator[int]:
-            """
-            Generate primes upto (including) given number
 
-            >>> list(sieve(10))
-            [2, 3, 5, 7]
-            >>> list(sieve(11))
-            [2, 3, 5, 7, 11]
-            """
-            primes = [True for _ in range(upTo + 1)]
-            # primes[0] = False
-            # primes[1] = False
-            p = 2
-            while p * p <= upTo:
-                if primes[p]:
-                    for i in range(p * 2, upTo + 1, p):
-                        primes[i] = False
-                p += 1
-            for p in range(2, upTo + 1):
-                if primes[p]:
-                    yield p
+def solve2(n=10001):
+    from sympy import prime
 
-        gen_sieve = sieve(upper_bound)
-        for _ in range(N - 1):
-            next(gen_sieve)
-        return next(gen_sieve)
-
-    def solve2(self, N=10001):
-        from sympy import prime
-
-        return prime(N)
+    return prime(n)
 
 
 if __name__ == "__main__":
-    solver = Solution()
-    print(solver.answer, solver.time)
+    print(solve())
+    print(solve2())
