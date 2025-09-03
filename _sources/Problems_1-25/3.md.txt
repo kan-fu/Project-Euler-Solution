@@ -1,0 +1,24 @@
+# Problem 3
+[Problem 3 link](https://projecteuler.net/problem=3) 
+
+It can be proved by contradiction that n can at most have one prime factor that is larger than $sqrt(n)$.
+Given the unique prime factorization 
+```{math}
+n = p_1^{q_1} \cdot p_2^{q_2} \cdot ... p_n^{q_n} \\\\
+```
+where $p_1 < p_2 < ... < p_n$, $q_i > 0$,
+if we cancel all the prime factors that are smaller than $sqrt(n)$, there will be two cases:
+1. the largest prime factor $p_n <= int(sqrt(n))$ 
+    $\Rightarrow$ the remaining n would be 1
+   - e.g., n = 9, 12
+2. the largest prime factor $p_n > int(sqrt(n))$ 
+    $\Rightarrow$ the remaining n would be $p_n$ ($q_n$ must be 1)
+   - e.g., n = 10, 17
+
+So we can generate primes upto $sqrt(n)$ using the sieve algorithm, and cancel these prime factors. 
+In case 1, we need to additionally store the largest prime that is smaller than sqrt(N).
+
+For the other solutions, sympy can also be used to generate prime numbers or even factor a number
+
+```{literalinclude} ../../solution/problem3.py
+```

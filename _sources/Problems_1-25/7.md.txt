@@ -1,0 +1,8 @@
+# Problem 7
+[Problem 7 link](https://projecteuler.net/problem=7) 
+
+Sieve is the go-to method to generate prime numbers. 
+Sympy also has [prime](https://docs.sympy.org/latest/modules/ntheory.html#sympy.ntheory.generate.prime) method to generate the nth prime number.
+
+```{literalinclude} ../../solution/problem7.py
+```
